@@ -97,7 +97,7 @@ if st.sidebar.button("🔄 Reset Conversation"):
     st.session_state.messages = []
     st.session_state.assistant_count = 0
     st.session_state.feedback_given = False
-    st.experimental_rerun()
+    st.rerun()
 
 
 if not any(m for m in st.session_state.messages if m["role"] == "system"):
@@ -146,6 +146,6 @@ if not st.session_state.feedback_given and st.session_state.assistant_count >= 2
         msg = call_grok(st.session_state.messages, model=model_name)
         st.session_state.messages.append({"role": "assistant", "content": msg.content})
         st.session_state.feedback_given = True
-        st.experimental_rerun()
+        st.rerun()
 
 
